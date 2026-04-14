@@ -1,0 +1,144 @@
+/* =========================================
+   Water Fill Preloader Styles
+   ========================================= */
+#preloader-fill {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0b057d;
+    /* Brand Dark Blue */
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    flex-direction: column;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+}
+
+#preloader-fill.loaded {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.fill-loader-content {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Logo Setup for Fill Effect */
+.logo-fill-wrapper {
+    position: relative;
+    width: 250px;
+    /* Fixed width for alignment */
+    height: 80px;
+    /* Approximate aspect ratio height, adjust based on logo */
+    margin-bottom: 40px;
+}
+
+.logo-base {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.3;
+    /* Dimmed base/empty state */
+    filter: brightness(0) invert(1);
+    /* White silhouette */
+}
+
+.logo-base img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* The Filling Layer */
+.logo-fill-mask {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    /* Starts empty */
+    overflow: hidden;
+    z-index: 2;
+    animation: liquidFill 2.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) forwards;
+    /* transition: height 0.1s linear; */
+    /* If responding to % loading, use JS. Here using keyframes */
+}
+
+.logo-fill-mask img {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    /* Must match wrapper height to keep alignment */
+    object-fit: contain;
+    filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+    /* Glowing White */
+}
+
+/* Wave Effect on Top of Fill? Optional complex addition, keeping it simple linear fill first */
+
+/* Text Styles */
+.hello-wrapper-fill {
+    height: 60px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.hello-text-fill {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #fff;
+    font-family: 'Karla', sans-serif;
+    transform: translateY(100%);
+    animation: textPopup 0.5s ease forwards 0.5s;
+}
+
+.subtext-fill {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+    letter-spacing: 1px;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards 1s;
+}
+
+/* Animations */
+@keyframes liquidFill {
+    0% {
+        height: 0%;
+    }
+
+    50% {
+        height: 50%;
+    }
+
+    100% {
+        height: 100%;
+    }
+}
+
+@keyframes textPopup {
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}

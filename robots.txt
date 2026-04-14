@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /middleware/
+Disallow: /handlers/
+Disallow: /security_log.txt
+Disallow: /.git/
+Disallow: /PHPMailer/
+
+Sitemap: https://sabarimarine.in/sitemap.xml
